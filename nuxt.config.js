@@ -76,7 +76,7 @@ export default {
         '@nuxtjs/vuetify',
         // for pinia
         '@nuxtjs/composition-api/module',
-        /* '@pinia/nuxt', */
+        '@pinia/nuxt',
         //gsap animation plugin
         'nuxt-gsap-module'
     ],
@@ -86,7 +86,7 @@ export default {
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
         // https://auth.nuxtjs.org/
-        '@nuxtjs/auth-next',
+        // '@nuxtjs/auth-next',
         // https://go.nuxtjs.dev/pwa
         '@nuxtjs/pwa',
         // https://go.nuxtjs.dev/content
@@ -142,21 +142,6 @@ export default {
         }
     },
 
-    auth: {
-        strategies: {
-            local: {
-                endpoints: {
-                    login: { url: process.env.BASE_URL + 'user/login', method: 'post' },
-                    logout: { url: process.env.BASE_URL + 'user/logout', method: 'post' },
-                    user: { url: process.env.BASE_URL + 'user', method: 'get', propertyName: 'user' },
-                }
-            }
-        }
-    },
-
-    publicRuntimeConfig: {
-        apiURL: process.env.BASE_URL,
-    },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {}

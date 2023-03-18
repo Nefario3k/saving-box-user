@@ -32,7 +32,7 @@
 
             <div class="col-md-6 mb-3 form-text-section">
               <span>Don’t have an account?</span>
-              <nuxt-link to="/auth/register">Sign Up</nuxt-link>
+              <nuxt-link to="/auth/register">Sign Up </nuxt-link>
             </div>
 
             <div class="col-12 mb-3 form-text-section text-center">
@@ -50,7 +50,8 @@
 
 <script>
 import AuthFooterVue from "@/components/assets/AuthFooter.vue";
-// import { useUserStore } from "~/stores";
+import { mapActions, mapState } from "pinia";
+import { useUserStore } from "~/stores";
 export default {
   components: { AuthFooterVue },
 
@@ -61,12 +62,23 @@ export default {
         unique_key: 'john@gmail.com',
         password: 'password',
         device_name: 'iphone-scds'
-      }
+      },
     };
   },
+  computed: {
+    ...mapState(useUserStore, ['name']),
+  },
+  mounted() {
+    // this.user = useUserStore();
+  },
   methods: {
+    ...mapActions(useUserStore, ['greet']),
     login() {
-      alert('submitting form');
+      this.$router.push('/');
+      // alert('submitting form');
+      /*  useUserStore().name = 'Donzoby';
+       this.greet(); */
+      // this.$router.push('/');
       // useUserStore().login(this.loginData);
       // console.log(this.$config.myPublicVariable);
       /* try {
